@@ -40,6 +40,8 @@
 <script lang="ts">
 import firebase from "firebase";
 import { Vue, Component } from 'vue-property-decorator';
+import GarnBarnApiConfig from "@/GarnBarnApiConfig.json";
+import axios from 'axios';
 import sha1 from 'sha1';
 
 @Component
@@ -49,18 +51,31 @@ export default class Register extends Vue {
     confirmPassword = '';
     email = ''
 
-    checkCompromisedPassword(): boolean {
+    async checkCompromisedPassword(): Promise<boolean | undefined> {
         const hashedPassword: string = sha1(this.password);
-        // todo send api 
-        return true
+        try {
+            const response = await axios.post(`${GarnBarnApiConfig.apiPrefix}/api/v1/account/compromised`, { hashedPassword });
+            if (response.status == 200) {
+                return true;
+            }
+        } catch (error: any) {
+            if (error.response.status == 302) {
+                return false;
+            }
+            return undefined
+        }
+        return false
     }
 
-    register(): void {
-        if (!this.checkCompromisedPassword()) {
+    async register(): Promise<void> {
+        const checkingPasssowrd = await this.checkCompromisedPassword()
+        if (!checkingPasssowrd) {
             alert('Your passoword is compromised')
             return
         }
-
+        else if (checkingPasssowrd == undefined) {
+            alert('An error occurred while checking the password.');
+        }
         if (this.password !== this.confirmPassword) {
             alert('Password and Confirm Password missmatched')
             return
