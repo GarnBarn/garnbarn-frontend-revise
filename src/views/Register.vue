@@ -10,7 +10,6 @@
                     <h3>Register to GarnBarn</h3>
                     <div>
                         <form @submit.prevent="register">
-<<<<<<< HEAD
                             <div class="user">
                                 <label for="username">Name - Surname:</label>
                                 <input id="username" v-model="username" type="text" />
@@ -24,17 +23,6 @@
                                 <input id="password" v-model="password" type="password" />
                             </div>
                             <div class="con-pass">
-=======
-                            <div>
-                                <label for="username">Username:</label>
-                                <input id="username" v-model="username" type="text" />
-                            </div>
-                            <div>
-                                <label for="password">Password:</label>
-                                <input id="password" v-model="password" type="password" />
-                            </div>
-                            <div>
->>>>>>> f6e1f81 (Add the base login and register page)
                                 <label for="confirmPassword">Confirm Password:</label>
                                 <input id="confirmPassword" v-model="confirmPassword" type="password" />
                             </div>
