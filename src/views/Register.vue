@@ -120,4 +120,8 @@ hr.rounded {
 .con-pass {
     margin: 0.25rem;
 }
+
+.ruser, .pass, .con-pass {
+    margin: 0.25rem;
+}
 </style>
