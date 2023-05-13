@@ -46,6 +46,7 @@ import sha1 from 'sha1';
 
 @Component
 export default class Register extends Vue {
+    user: firebase.User | null = null;
     username = '';
     password = '';
     confirmPassword = '';
