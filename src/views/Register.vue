@@ -51,6 +51,7 @@ export default class Register extends Vue {
     confirmPassword = '';
     email = ''
 
+<<<<<<< HEAD
     async checkCompromisedPassword(): Promise<boolean | undefined> {
         const hashedPassword: string = sha1(this.password);
         try {
@@ -83,13 +84,23 @@ export default class Register extends Vue {
         firebase
             .auth()
             .createUserWithEmailAndPassword(this.email, this.password)
+=======
+    register(): void {
+        firebase
+            .auth()
+            .createUserWithEmailAndPassword(this.username, this.password)
+>>>>>>> b95e6c1 (Add method to handler login and register)
             .then((res) => {
                 res.user!
                     .updateProfile({
                         displayName: this.username
                     })
                     .then(() => {
+<<<<<<< HEAD
                         this.$router.push('/signin')
+=======
+                        this.$router.push('/login')
+>>>>>>> b95e6c1 (Add method to handler login and register)
                     });
             })
             .catch((error) => {
