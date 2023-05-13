@@ -113,15 +113,12 @@ hr.rounded {
     margin-right: 10%;
     border-top: 2px solid #bbb;
     border-radius: 5px;
-<<<<<<< HEAD
 }
 
 .ruser,
 .pass,
 .con-pass {
     margin: 0.25rem;
-=======
->>>>>>> b95e6c1 (Add method to handler login and register)
 }
 
 .ruser,
