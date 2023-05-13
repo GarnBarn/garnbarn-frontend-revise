@@ -68,7 +68,7 @@ export default class SignIn extends Vue {
       .auth()
       .signInWithEmailAndPassword(this.email, this.password)
       .then(() => {
-        this.$router.push('/home')
+        this.$router.push('/consent')
       })
       .catch((error) => {
         alert(error.message);
