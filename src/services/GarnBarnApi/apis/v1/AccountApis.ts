@@ -110,4 +110,11 @@ export default class AccountApis extends api {
     };
     return this.sendRequest("POST", `${this.API_BASE_URL}/unlink/`, body);
   }
+
+  compromsiedpassword(hasdedPassword: string) {
+    const body = {
+      hashedPassword: hasdedPassword
+    }
+    return this.sendRequest("POST", `${this.API_BASE_URL}/compromised/`, body);
+  }
 }

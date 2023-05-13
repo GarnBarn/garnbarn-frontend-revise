@@ -90,7 +90,7 @@ export default class Register extends Vue {
                         displayName: this.username
                     })
                     .then(() => {
-                        this.$router.push('/signin')
+                        this.$router.push('/login')
                     });
             })
             .catch((error) => {
