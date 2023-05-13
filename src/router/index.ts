@@ -32,11 +32,14 @@ const routes: Array<RouteConfig> = [
     component: Register,
   },
   {
+<<<<<<< HEAD
     path: "/forgot-password",
     name: "forgetPassword",
     component: forgetPassword,
   },
   {
+=======
+>>>>>>> f6e1f81 (Add the base login and register page)
     path: "/home",
     name: "HomePage",
     component: Home,
