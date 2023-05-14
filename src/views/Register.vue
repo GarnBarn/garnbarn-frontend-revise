@@ -11,7 +11,7 @@
                     <div>
                         <form @submit.prevent="register">
                             <div class="user">
-                                <label for="username">Username:</label>
+                                <label for="username">Name - Surname:</label>
                                 <input id="username" v-model="username" type="text" />
                             </div>
                             <div class="user">
