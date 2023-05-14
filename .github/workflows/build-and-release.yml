@@ -78,6 +78,5 @@ jobs:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           platforms: |
             linux/amd64
-            linux/arm64
           ssh: |
             default
