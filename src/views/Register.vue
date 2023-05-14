@@ -56,7 +56,7 @@ export default class Register extends Vue {
     }
 
     register(): void {
-        if (!this.checkCompromisedPassword) {
+        if (!this.checkCompromisedPassword()) {
             alert('Your passoword is compromised')
             return
         }
