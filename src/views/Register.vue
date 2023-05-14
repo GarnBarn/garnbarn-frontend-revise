@@ -82,21 +82,26 @@ export default class Register extends Vue {
             alert('Password and Confirm Password missmatched')
             return
         }
-        firebase
-            .auth()
-            .createUserWithEmailAndPassword(this.email, this.password)
-            .then((res) => {
-                res.user!
-                    .updateProfile({
-                        displayName: this.username
-                    })
-                    .then(() => {
-                        this.$router.push('/signin')
-                    });
-            })
-            .catch((error) => {
-                alert(error.message);
-            });
+        else if (checkingPasssowrd == undefined) {
+            alert('An error occurred while checking the password.');
+        }
+        else {
+            firebase
+                .auth()
+                .createUserWithEmailAndPassword(this.email, this.password)
+                .then((res) => {
+                    res.user!
+                        .updateProfile({
+                            displayName: this.username
+                        })
+                        .then(() => {
+                            this.$router.push('/signin')
+                        });
+                })
+                .catch((error) => {
+                    alert(error.message);
+                });
+        }
     }
 }
 </script>
