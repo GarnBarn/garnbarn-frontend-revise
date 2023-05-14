@@ -14,10 +14,6 @@ RUN yarn install
 COPY . .
 RUN yarn run build
 
-## production-stage
-FROM nginx:stable-alpine AS production-stage
+EXPOSE 8080
 
-COPY nginx.conf /etc/nginx/nginx.conf
-COPY --from=builder dist /usr/share/nginx/html/
-
-EXPOSE 80
+CMD ["yarn", "serve"]

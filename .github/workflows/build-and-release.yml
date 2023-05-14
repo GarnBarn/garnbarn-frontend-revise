@@ -59,6 +59,11 @@ jobs:
           username: ${{ github.repository_owner }}
           password: ${{ secrets.GITHUB_TOKEN }}
 
+      - name: Mount a fake secret file
+        run: |
+          echo FakeValue &gt;&gt; src/firebaseConfig.json
+          echo FakeValue &gt;&gt; src/GarnBarnApiConfig.json
+
       # Setup BuildX
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v2
