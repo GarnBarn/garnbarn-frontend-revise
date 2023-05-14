@@ -74,7 +74,7 @@ jobs:
         with:
           context: .
           push: true
-          tags: ${{ format('ghcr.io/garnbarn/garnbarn-frontend-revise{0}', needs.release-on-github.outputs.newTag) }},ghcr.io/garnbarn/garnbarn-frontend-reviselatest
+          tags: ${{ format('ghcr.io/garnbarn/garnbarn-frontend-revise:{0}', needs.release-on-github.outputs.newTag) }},ghcr.io/garnbarn/garnbarn-frontend-revise:latest
           github-token: ${{ secrets.GITHUB_TOKEN }}
           platforms: |
             linux/amd64
