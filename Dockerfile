@@ -1,5 +1,5 @@
-# Builder
-FROM node:12-alpine AS builder
+## Builder Stage
+FROM node:12-alpine AS build-stage
 
 WORKDIR /app
 
@@ -13,6 +13,21 @@ RUN yarn install
 # copy project files and folders to the current working directory (i.e. 'app' folder)
 COPY . .
 
-EXPOSE 8080
+# Build
+RUN yarn run build
 
-CMD ["yarn", "serve"]
+# Remove sourcemap file before send output to production-stage
+RUN find . -name "*.map" -type f -delete
+
+
+
+## Production Stage
+FROM nginx:stable-alpine as production-stage
+
+COPY nginx.conf /etc/nginx/nginx.conf
+
+COPY --from=build-stage /app/dist /usr/share/nginx/html/
+
+
+EXPOSE 80
+CMD ["nginx", "-g", "daemon off;"]

@@ -61,8 +61,11 @@ jobs:
 
       - name: Mount a fake secret file
         run: |
-          echo FakeValue > src/firebaseConfig.json
-          echo FakeValue > src/GarnBarnApiConfig.json
+          echo $firebaseConfig > src/firebaseConfig.json
+          echo $config > src/GarnBarnApiConfig.json
+        env:
+          config: ${{ secrets.GARNBARN_FRONTEND_CONFIG }}
+          firebaseConfig: ${{ secrets.GARNBARN_FIREBASE_CONFIG }}
 
       # Setup BuildX
       - name: Set up Docker Buildx
