@@ -61,8 +61,8 @@ jobs:
 
       - name: Mount a fake secret file
         run: |
-          echo FakeValue &gt;&gt; src/firebaseConfig.json
-          echo FakeValue &gt;&gt; src/GarnBarnApiConfig.json
+          echo FakeValue > src/firebaseConfig.json
+          echo FakeValue > src/GarnBarnApiConfig.json
 
       # Setup BuildX
       - name: Set up Docker Buildx
