@@ -60,6 +60,11 @@ export default class Register extends Vue {
             alert('Your passoword is compromised')
             return
         }
+
+        if (this.password !== this.confirmPassword) {
+            alert('Password and Confirm Password missmatched')
+            return
+        }
         firebase
             .auth()
             .createUserWithEmailAndPassword(this.email, this.password)
