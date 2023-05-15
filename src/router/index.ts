@@ -11,10 +11,7 @@ import Account from "@/views/Account/Account.vue";
 import LinkAccount from "@/views/Account/LinkAccount.vue";
 import PageNotFound from "@/views/PageNotFound.vue";
 import Register from "@/views/Register.vue"
-<<<<<<< HEAD
 import forgetPassword from "@/views/ForgetPassword.vue"
-=======
->>>>>>> 6b17353 ([ Gb-77 ] Add register page and login with email and password (#5))
 
 Vue.use(VueRouter);
 
@@ -35,14 +32,11 @@ const routes: Array<RouteConfig> = [
     component: Register,
   },
   {
-<<<<<<< HEAD
     path: "/forgot-password",
     name: "forgetPassword",
     component: forgetPassword,
   },
   {
-=======
->>>>>>> 6b17353 ([ Gb-77 ] Add register page and login with email and password (#5))
     path: "/home",
     name: "HomePage",
     component: Home,
