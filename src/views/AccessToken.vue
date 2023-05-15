@@ -24,20 +24,21 @@ export default class accessToken extends Vue {
     async executeCode() {
         const queryData = this.getUrlParams(window.location.href);
         const redirect_uri = localStorage.getItem("redirect_uri")
-        const nounce = localStorage.getItem("nouce")
+        const nonce = localStorage.getItem("nonce")
+        const scope = localStorage.getItem("scope")
         const body = {
             code: queryData.code,
             redirect_uri: redirect_uri,
-            nonce: nounce
+            nonce: nonce,
+            scope: scope
         };
+        alert(JSON.stringify(body))
         try {
-            await axios.post(`${GarnBarnApiConfig.apiPrefix}/api/v1/account/token/`, body).then(
-               response => alert(response)
-            );
+            const response: any = await axios.post(`${GarnBarnApiConfig.apiPrefix}/api/v1/account/token`, body);
+            await firebase.auth().signInWithCustomToken(response.data.token)
+            this.$router.push("/consent")
         } catch (error) {
-            console.error(error);
-
-            alert(error);
+            alert("You are not authorized to use garnbarn. Please contract adminitrator.")
             this.$router.push("/signin");
         }
     }

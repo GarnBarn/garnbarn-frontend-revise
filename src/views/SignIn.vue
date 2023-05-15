@@ -127,18 +127,18 @@ export default class SignIn extends Vue {
     const data = {
       "response_type": "code",
       "client_id": GarnBarnApiConfig.client_id,
-      "scope": "garnbarn",
-      "nouce": this.generateRandomString(),
+      "scope": "openid profile email garnbarn",
+      "nonce": this.generateRandomString(),
       "redirect_uri": `${window.location.origin}/access-token`,
       "audience": "https://api.garnbarn.sirateek.dev"
     }
     localStorage.setItem("redirect_uri", data.redirect_uri);
-    localStorage.setItem("nouce", data.nouce);
+    localStorage.setItem("nonce", data.nonce);
+    localStorage.setItem("scope", data.scope)
     const prefix = "https://garnbarn.jp.auth0.com/authorize";
     const queryString = Object.entries(data)
       .map(([key, value]) => `${encodeURIComponent(key)}=${encodeURIComponent(value)}`)
       .join("&");
-
     const url = `${prefix}?${queryString}`;
 
     return url;
@@ -146,32 +146,7 @@ export default class SignIn extends Vue {
 
 
   oidcLogin(): void {
-    alert(this.createAuth0URL())
     window.location.href = this.createAuth0URL();
-    // firebase
-    //   .auth()
-    //   .signInWithPopup(provider)
-    //   .then((result) => {
-    //     const oauthAccessToken = (result.credential?.toJSON() as any)
-    //       .oauthAccessToken;
-
-    //     console.log(oauthAccessToken);
-
-    //     if (!oauthAccessToken) {
-    //       alert("Signin error");
-    //       return;
-    //     }
-
-    //     const parsedJwt = this.parseJwt(oauthAccessToken);
-
-    //     console.log(parsedJwt);
-
-    //     console.log(parsedJwt.scope);
-    //     this.$router.push("/consent");
-    //   })
-    //   .catch((error) => {
-    //     alert(error.message);
-    //   });
   }
 }
 </script>
