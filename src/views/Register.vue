@@ -82,9 +82,6 @@ export default class Register extends Vue {
             alert('Password and Confirm Password missmatched')
             return
         }
-        else if (checkingPasssowrd == undefined) {
-            alert('An error occurred while checking the password.');
-        }
         else {
             firebase
                 .auth()
