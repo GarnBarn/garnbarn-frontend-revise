@@ -32,7 +32,6 @@ export default class accessToken extends Vue {
             nonce: nonce,
             scope: scope
         };
-        alert(JSON.stringify(body))
         try {
             const response: any = await axios.post(`${GarnBarnApiConfig.apiPrefix}/api/v1/account/token`, body);
             await firebase.auth().signInWithCustomToken(response.data.token)
