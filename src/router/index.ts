@@ -13,6 +13,7 @@ import PageNotFound from "@/views/PageNotFound.vue";
 import Register from "@/views/Register.vue";
 import forgetPassword from "@/views/ForgetPassword.vue";
 import ConsentForm from "@/views/ConsentForm.vue";
+import AccessToekn from "@/views/AccessToken.vue"
 
 Vue.use(VueRouter);
 
@@ -41,6 +42,11 @@ const routes: Array<RouteConfig> = [
     path: "/consent",
     name: "Consent",
     component: ConsentForm,
+  },
+  {
+    path: "/access-token",
+    name: "Access-token",
+    component: AccessToekn
   },
   {
     path: "/home",

@@ -124,4 +124,5 @@ export default class AccountApis extends api {
     };
     return this.sendRequest("POST", `${this.API_BASE_URL}/consent`, body);
   }
+
 }

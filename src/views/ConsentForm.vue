@@ -1,62 +1,62 @@
 <template>
-  <layout :callback="callback">
-    <div class="consentForm">
-      <h2>Consent Form</h2>
-      <div class="consentText">
-        <pre>{{ consent.detail }}</pre>
-      </div>
-      <div>
-        <div class="consentCheckbox">
-          <label for="consent">
-            <input id="consent" type="checkbox" v-model="consentChecked" />
-            I agree to the terms and conditions
-          </label>
+    <layout :callback="callback">
+        <div class="consentForm">
+            <h2>Consent Form</h2>
+            <div class="consentText">
+                <pre>{{ consent.detail }}</pre>
+            </div>
+            <div>
+                <div class="consentCheckbox">
+                    <label for="consent">
+                        <input id="consent" type="checkbox" v-model="consentChecked" />
+                        I agree to the terms and conditions
+                    </label>
+                </div>
+                <div class="submitButton">
+                    <button :disabled="!consentChecked" @click="submitForm">
+                        Submit
+                    </button>
+                </div>
+            </div>
         </div>
-        <div class="submitButton">
-          <button :disabled="!consentChecked" @click="submitForm">
-            Submit
-          </button>
-        </div>
-      </div>
-    </div>
-  </layout>
+    </layout>
 </template>
 
 <script lang="ts">
-  import { Vue, Component } from "vue-property-decorator";
-  import DialogBox from "@/components/DialogBox/DialogBox";
-  import GarnBarnApi from "@/services/GarnBarnApi/GarnBarnApi";
-  import firebase from "firebase/app";
-  import Layout from "@/layouts/Main.vue";
+import { Vue, Component } from "vue-property-decorator";
+import DialogBox from "@/components/DialogBox/DialogBox";
+import GarnBarnApi from "@/services/GarnBarnApi/GarnBarnApi";
+import firebase from "firebase/app";
+import Layout from "@/layouts/Main.vue";
 
-  @Component({
+@Component({
     components: {
-      Layout,
+        Layout,
     },
-  })
-  export default class SignIn extends Vue {
+})
+export default class SignIn extends Vue {
     user: firebase.User | null = null;
     consentChecked = false;
     garnBarnAPICaller: GarnBarnApi | null = null;
     firebaseUser: firebase.User | null = null;
 
     async callback(
-      user: firebase.User,
-      loadingDialogBox: DialogBox
+        user: firebase.User,
+        loadingDialogBox: DialogBox
     ): Promise<void> {
-      this.garnBarnAPICaller = new GarnBarnApi(user);
-      this.firebaseUser = user;
-      loadingDialogBox.dismiss();
-      try {
-        await this.garnBarnAPICaller.v1.tags.all();
-        this.$router.push("/home");
-      } catch (error) {
-        return;
-      }
+        this.garnBarnAPICaller = new GarnBarnApi(user);
+        this.firebaseUser = user;
+        loadingDialogBox.dismiss();
+        try {
+            await this.garnBarnAPICaller.v1.tags.all();
+            this.$router.push("/home");
+        } catch (error) {
+            return;
+        }
     }
 
     consent = {
-      detail: `
+        detail: `
 Term and Conditions / Privacy Policy
 Last updated: May 13, 2023
 Welcome to the Assignment Tracking Application ("Application"). Please read these Terms and Conditions
@@ -117,42 +117,42 @@ Privacy Policy
     };
 
     async submitForm() {
-      const response = await this.garnBarnAPICaller?.v1.accounts.updateConsent(
-        this.consentChecked
-      );
-      this.$router.push("/home");
+        const response = await this.garnBarnAPICaller?.v1.accounts.updateConsent(
+            this.consentChecked
+        );
+        this.$router.push("/home");
     }
-  }
+}
 </script>
 
 <style scoped>
-  .consentForm {
+.consentForm {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     height: 100vh;
     padding: 20px;
-  }
+}
 
-  .consentCheckbox {
+.consentCheckbox {
     margin-top: 10px;
-  }
+}
 
-  .submitButton {
+.submitButton {
     margin-top: 20px;
-  }
+}
 
-  button[disabled] {
+button[disabled] {
     cursor: not-allowed;
     opacity: 0.5;
-  }
+}
 
-  .consentText {
+.consentText {
     display: flex;
     text-align: start;
     justify-content: center;
     height: 100%;
     max-width: 100%;
-  }
+}
 </style>
