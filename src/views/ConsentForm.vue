@@ -120,7 +120,6 @@ Privacy Policy
       const response = await this.garnBarnAPICaller?.v1.accounts.updateConsent(
         this.consentChecked
       );
-      console.log(response);
       this.$router.push("/home");
     }
   }

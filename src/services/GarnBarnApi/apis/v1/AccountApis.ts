@@ -119,7 +119,6 @@ export default class AccountApis extends api {
   }
 
   updateConsent(selected: boolean) {
-    console.log("Hello");
     const body = {
       consent: selected,
     };
