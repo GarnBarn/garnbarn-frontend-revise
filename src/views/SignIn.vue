@@ -55,7 +55,7 @@ export default class SignIn extends Vue {
   mounted(): void {
     let firebaseAuthInstance: firebase.auth.Auth = firebase.auth();
     let uiConfig: any = {
-      signInSuccessUrl: "/home",
+      signInSuccessUrl: "/consent",
       signInOptions: [firebase.auth.GoogleAuthProvider.PROVIDER_ID],
       signInFlow: "popup",
     };
@@ -68,7 +68,7 @@ export default class SignIn extends Vue {
       .auth()
       .signInWithEmailAndPassword(this.email, this.password)
       .then(() => {
-        this.$router.push('/home')
+        this.$router.push('/consent')
       })
       .catch((error) => {
         alert(error.message);

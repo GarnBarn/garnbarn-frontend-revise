@@ -90,7 +90,7 @@ export default class Register extends Vue {
                         displayName: this.username
                     })
                     .then(() => {
-                        this.$router.push('/signin')
+                        this.$router.push('/login')
                     });
             })
             .catch((error) => {
@@ -129,6 +129,12 @@ hr.rounded {
     margin-right: 10%;
     border-top: 2px solid #bbb;
     border-radius: 5px;
+}
+
+.ruser,
+.pass,
+.con-pass {
+    margin: 0.25rem;
 }
 
 .ruser,
