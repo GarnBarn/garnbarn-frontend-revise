@@ -56,20 +56,20 @@ export default class Register extends Vue {
         try {
             const response = await axios.post(`${GarnBarnApiConfig.apiPrefix}/api/v1/account/compromised`, { hashedPassword });
             if (response.status == 200) {
-                return true;
+                return false;
             }
         } catch (error: any) {
             if (error.response.status == 302) {
-                return false;
+                return true;
             }
             return undefined
         }
-        return false
+        return true
     }
 
     async register(): Promise<void> {
         const checkingPasssowrd = await this.checkCompromisedPassword()
-        if (!checkingPasssowrd) {
+        if (checkingPasssowrd) {
             alert('Your passoword is compromised')
             return
         }
