@@ -75,6 +75,7 @@ export default class Register extends Vue {
         }
         else if (checkingPasssowrd == undefined) {
             alert('An error occurred while checking the password.');
+            return
         }
         if (this.password !== this.confirmPassword) {
             alert('Password and Confirm Password missmatched')
