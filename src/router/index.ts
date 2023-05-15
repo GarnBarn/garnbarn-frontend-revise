@@ -10,12 +10,9 @@ import TagDetailView from "@/views/Tag/TagDetailView.vue";
 import Account from "@/views/Account/Account.vue";
 import LinkAccount from "@/views/Account/LinkAccount.vue";
 import PageNotFound from "@/views/PageNotFound.vue";
-import Register from "@/views/Register.vue"
-<<<<<<< HEAD
-import forgetPassword from "@/views/ForgetPassword.vue"
-=======
-import ConsentForm from "@/views/ConsentForm.vue"
->>>>>>> bd08128 (Add mock consent form page)
+import Register from "@/views/Register.vue";
+import forgetPassword from "@/views/ForgetPassword.vue";
+import ConsentForm from "@/views/ConsentForm.vue";
 
 Vue.use(VueRouter);
 
@@ -36,15 +33,14 @@ const routes: Array<RouteConfig> = [
     component: Register,
   },
   {
-<<<<<<< HEAD
     path: "/forgot-password",
     name: "forgetPassword",
     component: forgetPassword,
-=======
+  },
+  {
     path: "/consent",
     name: "Consent",
     component: ConsentForm,
->>>>>>> bd08128 (Add mock consent form page)
   },
   {
     path: "/home",

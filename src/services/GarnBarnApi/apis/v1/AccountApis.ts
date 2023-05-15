@@ -113,15 +113,16 @@ export default class AccountApis extends api {
 
   compromsiedpassword(hasdedPassword: string) {
     const body = {
-      hashedPassword: hasdedPassword
-    }
+      hashedPassword: hasdedPassword,
+    };
     return this.sendRequest("POST", `${this.API_BASE_URL}/compromised/`, body);
   }
 
   updateConsent(selected: boolean) {
+    console.log("Hello");
     const body = {
-      "consent": selected
-    }
+      consent: selected,
+    };
     return this.sendRequest("POST", `${this.API_BASE_URL}/consent`, body);
   }
 }
